@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yieh Phui Enterprise — EPD Carbon Footprint Comparison: Blast Furnace vs EAF">
+  <title>Yieh Phui EPD — CFP Comparison</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #eef0f4;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(160deg, #0d1f3c 0%, #163556 100%);
+      color: white;
+      padding: 2.25rem 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #1a7a6e, #25b39f, #1a7a6e);
+    }
+
+    .company-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #7fb5d5;
+      margin-bottom: 0.65rem;
+    }
+
+    .header-title {
+      font-size: clamp(1.05rem, 3.8vw, 1.55rem);
+      font-weight: 700;
+      line-height: 1.35;
+      color: #ffffff;
+      max-width: 560px;
+      margin: 0 auto 1rem;
+    }
+    .header-title em {
+      font-style: normal;
+      color: #5dcfc2;
+    }
+
+    .badge-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(29, 120, 104, 0.25);
+      border: 1px solid rgba(93, 207, 194, 0.35);
+      color: #7de8db;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Nav ── */
+    .nav-bar {
+      background: #ffffff;
+      border-bottom: 1px solid #dde1ea;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .nav-bar a {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #5a607a;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .nav-bar a:hover { color: #1a7a6e; }
+    .nav-bar a.active {
+      color: #1a7a6e;
+      border-bottom-color: #25b39f;
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .section-hint {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #7a8298;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Table card ── */
+    .table-card {
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.07);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead tr {
+      background: linear-gradient(135deg, #0d1f3c, #1a3a5c);
+    }
+
+    thead th {
+      padding: 0.9rem 1rem;
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #7de8db;
+      white-space: nowrap;
+    }
+
+    thead th:not(:first-child) {
+      text-align: center;
+    }
+
+    /* Sub-header row */
+    .subhead tr {
+      background: #f4f6fa;
+    }
+    .subhead td {
+      padding: 0.35rem 1rem;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9099b0;
+      border-bottom: 1px solid #dde1ea;
+    }
+    .subhead td:not(:first-child) {
+      text-align: center;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #eef0f4;
+      transition: background 0.12s;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #f7f9fc; }
+
+    tbody td {
+      padding: 0.85rem 1rem;
+      font-size: 0.88rem;
+      color: #1a1a2e;
+      vertical-align: middle;
+    }
+    tbody td:not(:first-child) {
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .product-code {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #0d1f3c;
+      letter-spacing: 0.03em;
+    }
+
+    .product-name {
+      font-size: 0.65rem;
+      color: #7a8298;
+      margin-top: 0.15rem;
+      line-height: 1.4;
+    }
+
+    .val-bf {
+      color: #5a607a;
+      font-weight: 500;
+    }
+    .val-eaf {
+      color: #1a7a6e;
+      font-weight: 700;
+    }
+
+    /* placeholder style */
+    .placeholder {
+      color: #c5cad8;
+      font-style: italic;
+    }
+
+    /* ── Unit note ── */
+    .unit-note {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: rgba(29, 120, 104, 0.07);
+      border: 1px solid rgba(29, 120, 104, 0.18);
+      border-radius: 8px;
+      font-size: 0.68rem;
+      color: #5a8a80;
+      line-height: 1.6;
+    }
+    .unit-note strong { color: #1a7a6e; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 1.25rem 1rem 2.5rem;
+      color: #9099b0;
+      font-size: 0.7rem;
+      line-height: 1.7;
+    }
+    footer a {
+      color: #1a9e8e;
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+    .footer-divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, #1a7a6e, #25b39f);
+      margin: 0 auto 0.9rem;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 520px) {
+      thead th, tbody td { padding-left: 0.65rem; padding-right: 0.65rem; }
+      tbody td { font-size: 0.82rem; }
+      .product-code { font-size: 0.88rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="company-label">Yieh Phui Enterprise Co., Ltd.</p>
+    <h1 class="header-title">
+      EPD Carbon Footprint<br><em>BF vs EAF Comparison</em>
+    </h1>
+    <div class="badge-row">
+      <span class="badge">A1–A3 Life Cycle Stage</span>
+      <span class="badge">GWP characterization: AR6 (GWP100)</span>
+    </div>
+  </header>
+
+  <nav class="nav-bar">
+    <a href="index.html">QR Codes</a>
+    <a href="compare.html" class="active">CFP Comparison</a>
+  </nav>
+
+  <main>
+    <p class="section-hint">kg CO₂ eq per tonne of product · A1–A3</p>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>BF</th>
+            <th>EAF</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="product-code">GI</div>
+              <div class="product-name">Hot-Dip Galvanized Steel Coils</div>
+            </td>
+            <td class="val-bf placeholder">—</td>
+            <td class="val-eaf placeholder">—</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-code">GF / GM</div>
+              <div class="product-name">Hot-Dip 5% Al-Zn / Zn-Al-Mg Steel Coils</div>
+            </td>
+            <td class="val-bf placeholder">—</td>
+            <td class="val-eaf placeholder">—</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-code">GL</div>
+              <div class="product-name">Hot-Dip 55% Al-Zn Coated Steel Coils</div>
+            </td>
+            <td class="val-bf placeholder">—</td>
+            <td class="val-eaf placeholder">—</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-code">PPGI</div>
+              <div class="product-name">Pre-painted Hot-Dip Galvanized Steel Coils</div>
+            </td>
+            <td class="val-bf placeholder">—</td>
+            <td class="val-eaf placeholder">—</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-code">PPGF / PPGM</div>
+              <div class="product-name">Pre-painted 5% Al-Zn / Zn-Al-Mg Coated Steel Coils</div>
+            </td>
+            <td class="val-bf placeholder">—</td>
+            <td class="val-eaf placeholder">—</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-code">PPGL</div>
+              <div class="product-name">Pre-painted 55% Al-Zn Coated Steel Coils</div>
+            </td>
+            <td class="val-bf placeholder">—</td>
+            <td class="val-eaf placeholder">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="unit-note">
+      <strong>BF</strong> = Blast Furnace route &nbsp;·&nbsp;
+      <strong>EAF</strong> = Electric Arc Furnace route (Yieh Phui) &nbsp;·&nbsp;
+      Unit: <strong>kg CO₂ eq / tonne</strong> &nbsp;·&nbsp;
+      Scope: A1–A3 (cradle to gate)
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-divider"></div>
+    <p>Yieh Phui Enterprise Co., Ltd. &nbsp;·&nbsp; Kaohsiung, Taiwan</p>
+    <p>EPDs registered at <a href="https://environdec.com" target="_blank" rel="noopener">environdec.com</a> &nbsp;·&nbsp; International EPD® System</p>
+  </footer>
+
+</body>
+</html>
