@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Yieh Phui Enterprise — Environmental Product Declarations for Electric Arc Furnace Steel Products">
-  <title>Yieh Phui EPD — EAF Products</title>
+  <meta name="description" content="Yieh Phui Enterprise — Environmental Product Declarations for Blast Furnace Steel Products">
+  <title>Yieh Phui EPD — BF Products</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -74,6 +74,32 @@
       letter-spacing: 0.04em;
     }
     .badge svg { flex-shrink: 0; }
+
+    /* ── Nav ── */
+    .nav-bar {
+      background: #ffffff;
+      border-bottom: 1px solid #dde1ea;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      padding: 0.75rem 1.2rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #5a607a;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .nav-bar a:hover { color: #1a7a6e; }
+    .nav-bar a.active {
+      color: #1a7a6e;
+      border-bottom-color: #25b39f;
+    }
 
     /* ── Main ── */
     main {
@@ -222,7 +248,7 @@
   <header>
     <p class="company-label">Yieh Phui Enterprise Co., Ltd.</p>
     <h1 class="header-title">
-      The <em>First and Only</em> Steel Mill in Taiwan<br>With EPDs
+      EPD — <em>Blast Furnace</em> Products
     </h1>
     <div class="badge-row">
       <span class="badge">
@@ -237,15 +263,15 @@
           <rect x="1.5" y="3" width="8" height="5.5" rx="1.2" stroke="#7de8db" stroke-width="1.3"/>
           <path d="M3.5 3V2.2A2 2 0 0 1 7.5 2.2V3" stroke="#7de8db" stroke-width="1.3" stroke-linecap="round"/>
         </svg>
-        Electric Arc Furnace (EAF) Materials
+        Blast Furnace (BF) Materials
       </span>
     </div>
   </header>
 
-  <nav style="background:#fff;border-bottom:1px solid #dde1ea;display:flex;justify-content:center;flex-wrap:wrap;">
-    <a href="index.html" style="padding:0.75rem 1.2rem;font-size:0.78rem;font-weight:600;color:#1a7a6e;text-decoration:none;letter-spacing:0.04em;border-bottom:2px solid #25b39f;white-space:nowrap;">QR Codes (EAF)</a>
-    <a href="bf.html" style="padding:0.75rem 1.2rem;font-size:0.78rem;font-weight:600;color:#5a607a;text-decoration:none;letter-spacing:0.04em;border-bottom:2px solid transparent;white-space:nowrap;">QR Codes (BF)</a>
-    <a href="compare.html" style="padding:0.75rem 1.2rem;font-size:0.78rem;font-weight:600;color:#5a607a;text-decoration:none;letter-spacing:0.04em;border-bottom:2px solid transparent;white-space:nowrap;">CFP Comparison</a>
+  <nav class="nav-bar">
+    <a href="index.html">QR Codes (EAF)</a>
+    <a href="bf.html" class="active">QR Codes (BF)</a>
+    <a href="compare.html">CFP Comparison</a>
   </nav>
 
   <main>
@@ -253,91 +279,91 @@
     <div class="grid">
 
       <!-- GI -->
-      <a class="card" href="https://www.environdec.com/library/epd23975" target="_blank" rel="noopener noreferrer">
+      <a class="card" href="https://www.environdec.com/library/epd13434" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="product-code">GI</span>
           <span class="epd-pill">EPD</span>
         </div>
         <div class="card-body">
           <div class="qr-box">
-            <img src="images/GI.png" alt="QR Code — GI EPD" loading="lazy">
+            <img src="images/BF_GI.png" alt="QR Code — GI EPD (BF)" loading="lazy">
           </div>
-          <p class="product-name">Hot-Dip Galvanized Steel Coils (EAF)</p>
+          <p class="product-name">Hot-Dip Galvanized Steel Coils (BF)</p>
           <span class="tap-hint">↗ Scan or Tap</span>
         </div>
       </a>
 
-      <!-- GF/GM -->
-      <a class="card" href="https://www.environdec.com/library/epd23976" target="_blank" rel="noopener noreferrer">
+      <!-- GF -->
+      <a class="card" href="https://www.environdec.com/library/epd12998" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="product-code">GF / GM</span>
+          <span class="product-code">GF</span>
           <span class="epd-pill">EPD</span>
         </div>
         <div class="card-body">
           <div class="qr-box">
-            <img src="images/GFGM.png" alt="QR Code — GF/GM EPD" loading="lazy">
+            <img src="images/BF_GF.png" alt="QR Code — GF EPD (BF)" loading="lazy">
           </div>
-          <p class="product-name">Hot-Dip 5% Al-Zn Coated / Zn-Al-Mg Steel Coil (EAF)</p>
+          <p class="product-name">Hot-Dip 5% Al-Zn Coated Steel Coils (BF)</p>
           <span class="tap-hint">↗ Scan or Tap</span>
         </div>
       </a>
 
       <!-- GL -->
-      <a class="card" href="https://www.environdec.com/library/epd23977" target="_blank" rel="noopener noreferrer">
+      <a class="card" href="https://www.environdec.com/library/epd12999" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="product-code">GL</span>
           <span class="epd-pill">EPD</span>
         </div>
         <div class="card-body">
           <div class="qr-box">
-            <img src="images/GL.png" alt="QR Code — GL EPD" loading="lazy">
+            <img src="images/BF_GL.png" alt="QR Code — GL EPD (BF)" loading="lazy">
           </div>
-          <p class="product-name">Hot-Dip 55% Al-Zn Coated Steel Coils (EAF)</p>
+          <p class="product-name">Hot-Dip 55% Al-Zn Coated Steel Coils (BF)</p>
           <span class="tap-hint">↗ Scan or Tap</span>
         </div>
       </a>
 
       <!-- PPGI -->
-      <a class="card" href="https://www.environdec.com/library/epd23978" target="_blank" rel="noopener noreferrer">
+      <a class="card" href="https://www.environdec.com/library/epd13000" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="product-code">PPGI</span>
           <span class="epd-pill">EPD</span>
         </div>
         <div class="card-body">
           <div class="qr-box">
-            <img src="images/PPGI.png" alt="QR Code — PPGI EPD" loading="lazy">
+            <img src="images/BF_PPGI.png" alt="QR Code — PPGI EPD (BF)" loading="lazy">
           </div>
-          <p class="product-name">Pre-painted Hot-Dip Galvanized Steel Coils (EAF)</p>
+          <p class="product-name">Pre-painted Hot-Dip Galvanized Steel Coils (BF)</p>
           <span class="tap-hint">↗ Scan or Tap</span>
         </div>
       </a>
 
       <!-- PPGF/PPGM -->
-      <a class="card" href="https://www.environdec.com/library/epd23979" target="_blank" rel="noopener noreferrer">
+      <a class="card" href="https://www.environdec.com/library/epd13001" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="product-code">PPGF / PPGM</span>
           <span class="epd-pill">EPD</span>
         </div>
         <div class="card-body">
           <div class="qr-box">
-            <img src="images/PPGFPPGM.png" alt="QR Code — PPGF/PPGM EPD" loading="lazy">
+            <img src="images/BF_PPGFPPGM.png" alt="QR Code — PPGF/PPGM EPD (BF)" loading="lazy">
           </div>
-          <p class="product-name">Pre-painted Hot-Dip 5% Al-Zn / Zn-Al-Mg Coated Steel Coils (EAF)</p>
+          <p class="product-name">Pre-painted Hot-Dip 5% Al-Zn / Zn-Al-Mg Coated Steel Coils (BF)</p>
           <span class="tap-hint">↗ Scan or Tap</span>
         </div>
       </a>
 
       <!-- PPGL -->
-      <a class="card" href="https://www.environdec.com/library/epd23980" target="_blank" rel="noopener noreferrer">
+      <a class="card" href="https://www.environdec.com/library/epd2553" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="product-code">PPGL</span>
           <span class="epd-pill">EPD</span>
         </div>
         <div class="card-body">
           <div class="qr-box">
-            <img src="images/PPGL.png" alt="QR Code — PPGL EPD" loading="lazy">
+            <img src="images/BF_PPGL.png" alt="QR Code — PPGL EPD (BF)" loading="lazy">
           </div>
-          <p class="product-name">Pre-painted Hot-Dip 55% Al-Zn Coated Steel Coils (EAF)</p>
+          <p class="product-name">Pre-painted Hot-Dip 55% Al-Zn Coated Steel Coils (BF)</p>
           <span class="tap-hint">↗ Scan or Tap</span>
         </div>
       </a>
